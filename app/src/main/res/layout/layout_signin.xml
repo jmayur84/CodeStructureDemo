@@ -1,118 +1,54 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:id="@+id/activity_main"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="com.example.logindemo.view.Login.activity.LoginActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorPrimaryTrans"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="48dp">
 
     <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            android:src="@drawable/bg_people"/>
+            android:paddingBottom="20dp"
+            android:src="@drawable/ic_login" />
 
 
-    <LinearLayout
-            android:weightSum="10"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorBlackTrans"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
-
-
-        <LinearLayout
-                android:id="@+id/llSignin"
-                android:layout_weight="8.5"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimaryTrans"
-                android:orientation="horizontal">
-
-            <com.example.logindemo.customclass.VerticalTextView
-                    android:id="@+id/tvSigninInvoker"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:paddingTop="15dp"
-                    android:text="@string/signin_text"
-                    android:textAllCaps="true"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    android:visibility="gone"/>
-
-            <include
-                    android:id="@+id/llSigninContent"
-                    layout="@layout/layout_login"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-                android:id="@+id/llSignup"
-                android:layout_width="0dp"
-                android:layout_weight="1.5"
-                android:layout_height="match_parent"
-                android:background="@color/colorAccentTrans"
-                android:orientation="vertical">
-
-            <com.example.logindemo.customclass.VerticalTextView
-                    android:id="@+id/tvSignupInvoker"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="15dp"
-                    android:rotation="180"
-                    android:text="Signup"
-                    android:gravity="center_vertical"
-                    android:textAllCaps="true"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp"
-                    android:visibility="visible"/>
-
-            <include
-                    android:visibility="gone"
-                    android:id="@+id/llSignupContent"
-                    layout="@layout/layout_signup"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"/>
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
+    <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="30dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"
-            android:orientation="horizontal">
+            android:textColorHint="#FFF">
 
-        <ImageView
-                android:layout_width="0dp"
+        <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_facebook"/>
+                android:hint="@string/email_text"
+                android:inputType="textEmailAddress"
+                android:textColor="#FFFFFF" />
+    </android.support.design.widget.TextInputLayout>
 
-        <ImageView
-                android:layout_width="0dp"
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textColorHint="#FFF">
+
+        <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_twitter"/>
+                android:hint="@string/password_text"
+                android:inputType="textPassword"
+                android:textColor="#FFFFFF" />
+    </android.support.design.widget.TextInputLayout>
 
-        <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_linkedin"/>
-    </LinearLayout>
-
-
-</RelativeLayout>
+    <Button
+            android:id="@+id/btnSignin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:text="@string/signin_text"
+            android:textColor="#FFF"
+            android:textSize="30sp" />
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.logindemo.customclass
+package com.example.logindemo.ui.custom
 
 import android.content.Context
 import android.graphics.Canvas
