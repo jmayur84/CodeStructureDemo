@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">LoginDemo</string>
-    <string name="signin_text">Signin</string>
-    <string name="password_text">Password</string>
-    <string name="email_text">Email</string>
-</resources>
