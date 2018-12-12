@@ -1,2 +1,2 @@
 # CodeStructureDemo
-A normal login flow coding structure using MVP design architure, Retrofit with RxJava And Kotlin.
+A normal login flow coding structure using MVP design Architecture, Retrofit with RxJava And Kotlin.
