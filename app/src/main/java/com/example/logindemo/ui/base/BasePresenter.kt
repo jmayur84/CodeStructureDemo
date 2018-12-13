@@ -3,7 +3,8 @@ package com.example.logindemo.ui.base
 import java.lang.ref.WeakReference
 import java.util.concurrent.atomic.AtomicBoolean
 
-abstract class Presenter<T : Presenter.View> {
+
+abstract class BasePresenter<T : BasePresenter.View> {
 
     private lateinit var view: WeakReference<T>
 

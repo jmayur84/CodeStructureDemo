@@ -23,7 +23,7 @@
 
         <LinearLayout
                 android:id="@+id/llSignin"
-                android:layout_weight="8.1"
+                android:layout_weight="10"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="@color/colorPrimaryTrans"
@@ -53,7 +53,7 @@
         <LinearLayout
                 android:id="@+id/llSignup"
                 android:layout_width="0dp"
-                android:layout_weight="1.9"
+                android:layout_weight="0"
                 android:layout_height="match_parent"
                 android:background="@color/colorAccentTrans"
                 android:gravity="center_horizontal"

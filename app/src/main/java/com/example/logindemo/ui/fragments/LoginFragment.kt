@@ -1,30 +1,45 @@
 package com.example.logindemo.view.Login.fragments
 
-import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import com.example.logindemo.R
 import com.example.logindemo.ui.base.BaseFragment
+import com.example.logindemo.view.Login.activity.ILoginView
 
- class LoginFragment : BaseFragment() {
+class LoginFragment : BaseFragment(), ILoginView {
 
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-    }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun showError(msg: String) {
+        showToast(msg)
     }
 
+    override fun rxUnSubscribe() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun setListeners() {
+    }
+
+    override fun initializePresenter() {
+    }
+
+    override fun initData(savedInstanceState: Bundle?) {
+    }
+
+    override fun initViews(view: View) {
+    }
+
+    override fun getContentView(): Int {
+        return R.layout.frag_login
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    companion object {
+
+        fun newInstance(): BaseFragment {
+            return LoginFragment()
+        }
     }
+
+
 }
