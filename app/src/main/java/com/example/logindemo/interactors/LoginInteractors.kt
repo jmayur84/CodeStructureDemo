@@ -1,11 +1,13 @@
 package com.example.logindemo.interactors
 
-import com.example.logindemo.network.Request.Request
+import android.content.Context
+import com.example.logindemo.network.Request.LoginRequest
 import com.example.logindemo.network.Response.model.IAPICallBack
 import com.example.logindemo.network.Response.model.LoginResponse
 
 abstract class LoginInteractors {
 
-    abstract fun getLogin(request: Request, iCallBack: IAPICallBack<LoginResponse>)
+    abstract fun getLogin(context: Context, request: LoginRequest, iCallBack: IAPICallBack<LoginResponse>)
     abstract fun rxUnSubscribe()
+
 }

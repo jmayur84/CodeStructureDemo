@@ -6,6 +6,10 @@ interface ILoginView : BasePresenter.View {
 
     fun showError(msg: String)
 
-    fun rxUnSubscribe()
+    fun showProgress()
+
+    fun showProgress(msg:String)
+
+    fun stopProgress()
 
 }

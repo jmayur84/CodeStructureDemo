@@ -21,6 +21,7 @@
             android:textColorHint="#FFF">
 
         <android.support.design.widget.TextInputEditText
+                android:id="@+id/edittext1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email_text"
@@ -35,6 +36,7 @@
             android:textColorHint="#FFF">
 
         <android.support.design.widget.TextInputEditText
+                android:id="@+id/edittext2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password_text"
@@ -43,7 +45,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
-            android:id="@+id/btnSignin"
+            android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

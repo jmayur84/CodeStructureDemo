@@ -8,7 +8,7 @@ abstract class BasePresenter<T : BasePresenter.View> {
 
     private lateinit var view: WeakReference<T>
 
-    private lateinit var isViewAlive: AtomicBoolean
+    private var isViewAlive = AtomicBoolean()
 
     fun getView(): T? {
         return view.get()

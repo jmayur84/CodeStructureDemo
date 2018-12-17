@@ -11,16 +11,8 @@ class LoadingDialog private constructor() {
     private lateinit var dialog: Dialog
 
 
-    init {
-        ++count
-
-        println("\ncount is : $count")
-    }
-
-
     companion object {
 
-        var count: Int = 0
         private val mInstance: LoadingDialog = LoadingDialog()
 
         @Synchronized

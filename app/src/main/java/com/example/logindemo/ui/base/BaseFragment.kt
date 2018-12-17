@@ -2,6 +2,7 @@ package com.example.logindemo.ui.base
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import com.example.logindemo.ui.dialogs.LoadingDialog
 
 abstract class BaseFragment : Fragment() {
     lateinit var loading: LoadingDialog
-    var basePresenter: BasePresenter<BasePresenter.View>? = null
+    lateinit var basePresenter: BasePresenter<*>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,17 +43,37 @@ abstract class BaseFragment : Fragment() {
 
     abstract fun initViews(view: View)
 
+    /**
+     * Method to show progress Dialog without title
+     */
+    fun showProgress() {
+        loading.showDialog(context!!)
+    }
+
+    /**
+     * Method to show progress Dialog with title
+     */
+    fun showProgress(msg: String) {
+        if (!TextUtils.isEmpty(msg)) {
+            loading.showDialogWithTitle(context!!, msg)
+        }
+    }
+
+    /**
+     * Method to stop progress Dialog
+     */
+    fun stopProgress() {
+        loading.dismissDialog()
+    }
 
     abstract fun getContentView(): Int
 
-    fun preLoadData() {}
+    open fun preLoadData() {}
 
 
     override fun onStart() {
         super.onStart()
-        if (basePresenter != null) {
-            basePresenter!!.start()
-        }
+        basePresenter.start()
 
     }
 
@@ -63,8 +84,6 @@ abstract class BaseFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        if (basePresenter != null) {
-            basePresenter!!.finalizeView()
-        }
+        basePresenter.finalizeView()
     }
 }
