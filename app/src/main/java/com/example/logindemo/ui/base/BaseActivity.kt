@@ -3,21 +3,18 @@ package com.example.logindemo.view.Login.activity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import android.widget.Toast
 import com.example.logindemo.R
-import com.example.logindemo.app.LoginDemo
-import com.example.logindemo.network.InternetConnectionListener
+import com.example.logindemo.Utils.Utils
 import com.example.logindemo.ui.base.BasePresenter
 import com.example.logindemo.ui.dialogs.LoadingDialog
 
-abstract class BaseActivity : AppCompatActivity(), InternetConnectionListener {
+abstract class BaseActivity : AppCompatActivity() {
 
     lateinit var loading: LoadingDialog
     private var basePresenter: BasePresenter<BasePresenter.View>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (application as LoginDemo).setInternetConnectionListener(this)
         setContentView(getContentView())
 
         initFragment()
@@ -66,7 +63,7 @@ abstract class BaseActivity : AppCompatActivity(), InternetConnectionListener {
 
 
     fun showToast(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+        Utils.showToast(msg, this)
     }
 
 
@@ -76,17 +73,6 @@ abstract class BaseActivity : AppCompatActivity(), InternetConnectionListener {
             basePresenter!!.start()
         }
     }
-
-    override fun onResume() {
-        super.onResume()
-        (application as LoginDemo).setInternetConnectionListener(this)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        (application as LoginDemo).removeInternetConnectionListener()
-    }
-
 
     override fun onStop() {
         super.onStop()
@@ -100,6 +86,4 @@ abstract class BaseActivity : AppCompatActivity(), InternetConnectionListener {
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
     }
 
-    override fun onInternetUnavailable() {
-    }
 }

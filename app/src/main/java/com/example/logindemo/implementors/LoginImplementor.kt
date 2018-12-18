@@ -41,6 +41,8 @@ class LoginImplementor(networkService: NetworkService) : LoginInteractors() {
                 override fun onNext(t: Response<LoginResponse>?) {
                     if (Utils.filterResponse(t, context)) {
                         iCallBack.onSuccess(t!!.body()!!)
+                    } else {
+                        iCallBack.stopProgress()
                     }
 
                 }

@@ -16,7 +16,7 @@ import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers.newThread
 import java.util.concurrent.TimeUnit
 
-class NetworkService(context: Context, val mConnectionListener: InternetConnectionListener?) {
+class NetworkService(context: Context) {
 
     var mcontext = context
 
@@ -33,7 +33,7 @@ class NetworkService(context: Context, val mConnectionListener: InternetConnecti
     fun networkService(baseUrl: String) {
         okHttpClient = buildOkHttpClient()
 
-        val gson = GsonBuilder().setLenient().create()
+        val gson = GsonBuilder().create()
 
 
         apiObservables = LruCache(10)
@@ -71,12 +71,6 @@ class NetworkService(context: Context, val mConnectionListener: InternetConnecti
             .addInterceptor(object : NetworkCheckInterceptor() {
                 override fun isInternetAvailable(): Boolean {
                     return Utils.isInternetAvailable(mcontext)
-                }
-
-                override fun onInternetUnAvailable() {
-
-                    mConnectionListener!!.onInternetUnavailable()
-
                 }
             })
             .readTimeout(120, TimeUnit.SECONDS)

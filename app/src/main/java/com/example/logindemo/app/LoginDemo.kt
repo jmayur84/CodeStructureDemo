@@ -2,11 +2,10 @@ package com.example.logindemo.app
 
 import android.app.Application
 import com.example.logindemo.network.NetworkService
-import com.example.logindemo.network.InternetConnectionListener
 
 
 class LoginDemo : Application() {
-    var mConnectionListener: InternetConnectionListener? = null
+
     lateinit var networkService: NetworkService
 
     companion object {
@@ -25,15 +24,7 @@ class LoginDemo : Application() {
     override fun onCreate() {
         super.onCreate()
         ourInstance = this
+        networkService = NetworkService(this)
     }
 
-
-    fun setInternetConnectionListener(listener: InternetConnectionListener) {
-        mConnectionListener = listener
-        networkService = NetworkService(this, mConnectionListener)
-    }
-
-    fun removeInternetConnectionListener() {
-        mConnectionListener = null
-    }
 }
