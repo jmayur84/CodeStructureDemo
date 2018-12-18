@@ -25,6 +25,10 @@ class Utils {
         const val STATUS_NO_NETWORK = 600
 
 
+        fun Print(string: String){
+
+        }
+
         fun isEmailValid(editText: EditText): Boolean {
 
             return (!TextUtils.isEmpty(editText.text) && Patterns.EMAIL_ADDRESS.matcher(editText.text).matches())

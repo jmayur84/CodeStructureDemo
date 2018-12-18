@@ -50,7 +50,7 @@ class LoginFragment : BaseFragment(), ILoginView {
 
 
     override fun initializePresenter() {
-        super.basePresenter = loginPresenter
+        super.baseFragPresenter = loginPresenter
         loginPresenter.setView(this)
     }
 

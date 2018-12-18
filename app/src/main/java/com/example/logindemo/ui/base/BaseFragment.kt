@@ -6,12 +6,13 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
 import android.widget.Toast
 import com.example.logindemo.ui.dialogs.LoadingDialog
+import com.example.logindemo.view.Login.activity.BaseActivity
 
 abstract class BaseFragment : Fragment() {
-    lateinit var loading: LoadingDialog
-    lateinit var basePresenter: BasePresenter<*>
+    lateinit var baseFragPresenter: BasePresenter<*>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +22,6 @@ abstract class BaseFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        loading = LoadingDialog.getInstance()
         return inflater.inflate(getContentView(), container, false)
 
     }
@@ -47,23 +47,21 @@ abstract class BaseFragment : Fragment() {
      * Method to show progress Dialog without title
      */
     fun showProgress() {
-        loading.showDialog(context!!)
+        (context as BaseActivity).showProgress()
     }
 
     /**
      * Method to show progress Dialog with title
      */
     fun showProgress(msg: String) {
-        if (!TextUtils.isEmpty(msg)) {
-            loading.showDialogWithTitle(context!!, msg)
-        }
+        (context as BaseActivity).showProgress(msg)
     }
 
     /**
      * Method to stop progress Dialog
      */
     fun stopProgress() {
-        loading.dismissDialog()
+        (context as BaseActivity).stopProgress()
     }
 
     abstract fun getContentView(): Int
@@ -73,7 +71,7 @@ abstract class BaseFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        basePresenter.start()
+        baseFragPresenter.start()
 
     }
 
@@ -84,6 +82,6 @@ abstract class BaseFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        basePresenter.finalizeView()
+        baseFragPresenter.finalizeView()
     }
 }

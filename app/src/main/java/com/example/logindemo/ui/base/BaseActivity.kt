@@ -3,6 +3,7 @@ package com.example.logindemo.view.Login.activity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.text.TextUtils
 import com.example.logindemo.R
 import com.example.logindemo.Utils.Utils
 import com.example.logindemo.ui.base.BasePresenter
@@ -66,6 +67,10 @@ abstract class BaseActivity : AppCompatActivity() {
         Utils.showToast(msg, this)
     }
 
+    /**
+     * making activity presenter life cycle aware of activity
+     * starting the
+     */
 
     override fun onStart() {
         super.onStart()
@@ -74,6 +79,10 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+
+    /**
+     * making activity presenter life cycle aware of activity
+     */
     override fun onStop() {
         super.onStop()
         if (basePresenter != null) {
@@ -85,5 +94,31 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onBackPressed()
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
     }
+
+    /**
+     * Method to stop progress Dialog
+     */
+    fun stopProgress() {
+        loading.dismissDialog()
+    }
+
+
+    /**
+     * Method to show progress Dialog without title
+     */
+    fun showProgress() {
+        loading.showDialog(this)
+    }
+
+
+    /**
+     * Method to show progress Dialog with title
+     */
+    fun showProgress(str: String) {
+        if (!TextUtils.isEmpty(str)) {
+            loading.showDialogWithTitle(this, str)
+        }
+    }
+
 
 }

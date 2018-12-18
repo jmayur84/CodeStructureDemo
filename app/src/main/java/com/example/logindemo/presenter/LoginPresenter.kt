@@ -20,20 +20,15 @@ class LoginPresenter(networkService: NetworkService) : BasePresenter<ILoginView>
     }
 
     fun hitLoginApi(context: Context, req: LoginRequest) {
-        loginImplementor.getLogin(context, req, object : IAPICallBack<LoginResponse> {
-            override fun stopProgress() {
-                getView()!!.stopProgress()
-            }
+        loginImplementor.getLogin(context, req, object : IAPICallBack<LoginResponse>(context) {
+
 
             override fun onSuccess(response: LoginResponse) {
                 getView()!!.stopProgress()
                 getView()!!.showError("Login Successful !!")
             }
 
-            override fun onFailure(str: String) {
-                getView()!!.stopProgress()
-                getView()!!.showError(str)
-            }
+
         })
 
     }

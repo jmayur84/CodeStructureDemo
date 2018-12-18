@@ -48,16 +48,28 @@ class NetworkService(context: Context) {
     }
 
 
+    /**
+     * Method to return the API interface.
+     *
+     * @return
+     */
     fun getApi(): NetworkApi {
         return networkApi
     }
 
-
+    /**
+     * Method to clear the entire cache of observables
+     */
     fun clearCache() {
         apiObservables.evictAll()
     }
 
-
+    /**
+     * Method to build and return an OkHttpClient so we can set/get
+     * headers quickly and efficiently.
+     *
+     * @return
+     */
     private fun buildOkHttpClient(): OkHttpClient {
         val okHttpBuilder = OkHttpClient.Builder()
         val httpLoggingInterceptor = HttpLoggingInterceptor()
@@ -82,12 +94,20 @@ class NetworkService(context: Context) {
     }
 
 
-    fun getPreparedObservable(
-        unPreparedObservable: Observable<*>,
-        clazz: Class<*>,
-        cacheObservable: Boolean,
-        useCache: Boolean
-    ): Observable<*> {
+    /**
+     * Method to either return a cached observable or prepare a new one.
+     *
+     * @param unPreparedObservable
+     * @param clazz
+     * @param cacheObservable
+     * @param useCache
+     * @return Observable ready to be subscribed to
+     * We should use this method for network calls when we support application for both Portrait and Landscape mode and there is
+     * a chance that user can rotate device while network call is in progress, in that case pass "cacheObservable" and "useCache"
+     * these both booleans as "true" which will avoid leakage in request and will return response even if device is rotated in
+     * between network call is in progress.
+     */
+    fun getPreparedObservable(unPreparedObservable: Observable<*>, clazz: Class<*>, cacheObservable: Boolean, useCache: Boolean): Observable<*> {
 
         var preparedObservable: Observable<*>? = null
 
